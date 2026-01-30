@@ -43,7 +43,7 @@
               : 'bg-white text-gray-800 shadow-md',
           ]"
         >
-          <div class="text-sm font-bold mb-1" v-if="message.role === 'agent'">
+          <div v-if="message.role === 'agent'" class="text-sm font-bold mb-1">
             AI Agent
           </div>
           <div class="whitespace-pre-wrap">
@@ -59,15 +59,15 @@
       <div v-if="isThinking" class="flex justify-start">
         <div class="bg-white rounded-lg px-4 py-2 shadow-md">
           <div class="flex items-center space-x-2">
-            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"/>
             <div
               class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
               style="animation-delay: 0.1s"
-            ></div>
+            />
             <div
               class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
               style="animation-delay: 0.2s"
-            ></div>
+            />
             <span class="text-sm text-gray-600 ml-2">Thinking...</span>
           </div>
         </div>
@@ -76,7 +76,7 @@
 
     <!-- Input Area -->
     <div class="border-t border-gray-200 p-4 bg-white">
-      <form @submit.prevent="handleSubmit" class="flex space-x-2">
+      <form class="flex space-x-2" @submit.prevent="handleSubmit">
         <input
           v-model="inputText"
           type="text"
@@ -85,7 +85,7 @@
           class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           :disabled="isThinking"
           @keypress="handleKeyPress"
-        />
+        >
         <button
           type="submit"
           :disabled="!inputText.trim() || isThinking"

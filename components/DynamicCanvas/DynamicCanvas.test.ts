@@ -1,22 +1,16 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { mountSuspended } from "@nuxt/test-utils/runtime";
 import DynamicCanvas from "./DynamicCanvas.vue";
-import { useWidgetStore } from "~/stores/widgetStore";
-import { useWidgetRegistry } from "~/composables/useWidgetRegistry";
 import type { ActiveWidget } from "~/stores/widgetStore";
 
 describe("DynamicCanvas", () => {
+  // Stores and composables are auto-imported via @nuxt/test-utils
   let widgetStore: ReturnType<typeof useWidgetStore>;
   let widgetRegistry: ReturnType<typeof useWidgetRegistry>;
 
   beforeEach(async () => {
     widgetStore = useWidgetStore();
     widgetRegistry = useWidgetRegistry();
-    widgetStore.clearWidget();
-    widgetStore.setLoading(false);
-  });
-
-  afterEach(() => {
     widgetStore.clearWidget();
     widgetStore.setLoading(false);
   });

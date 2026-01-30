@@ -1,19 +1,10 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { mountSuspended } from "@nuxt/test-utils/runtime";
 import ChatInterface from "./ChatInterface.vue";
-import { useChatStore } from "~/stores/chatStore";
-import { useWidgetStore } from "~/stores/widgetStore";
-import { useMockAgent } from "~/composables/useMockAgent";
-import type { AgentResponse } from "~/types/agent";
-
-vi.mock("~/composables/useMockAgent", () => ({
-  useMockAgent: vi.fn(),
-}));
 
 describe("ChatInterface", () => {
   let chatStore: ReturnType<typeof useChatStore>;
   let widgetStore: ReturnType<typeof useWidgetStore>;
-  let mockSendMessage: ReturnType<typeof vi.fn>;
 
   beforeEach(async () => {
     chatStore = useChatStore();
@@ -21,23 +12,6 @@ describe("ChatInterface", () => {
     chatStore.clearMessages();
     widgetStore.clearWidget();
     widgetStore.setLoading(false);
-
-    mockSendMessage = vi.fn().mockResolvedValue({
-      message: "Test response",
-      action: {
-        type: "render_widget",
-        component: "SalesChart",
-        props: { title: "Test Chart", data: [1, 2, 3] },
-      },
-    }) as any;
-
-    vi.mocked(useMockAgent).mockReturnValue({
-      sendMessage: mockSendMessage,
-    } as any);
-  });
-
-  afterEach(() => {
-    vi.clearAllMocks();
   });
 
   it("renders correctly", async () => {
@@ -80,44 +54,25 @@ describe("ChatInterface", () => {
   });
 
   it("shows thinking indicator when isThinking is true", async () => {
-    let resolvePromise: () => void;
-    const delayedPromise = new Promise<AgentResponse>((resolve) => {
-      resolvePromise = () =>
-        resolve({
-          message: "Test response",
-          action: {
-            type: "render_widget",
-            component: "SalesChart",
-            props: { title: "Test", data: [1, 2, 3] },
-          },
-        });
-    });
-
-    mockSendMessage.mockReturnValue(delayedPromise);
-
     const wrapper = await mountSuspended(ChatInterface);
-    const input = wrapper.find('input[type="text"]') as any;
+    const input = wrapper.find('input[type="text"]');
     const form = wrapper.find("form");
 
     await input.setValue("Test message");
-    const submitPromise = form.trigger("submit");
+    form.trigger("submit");
     await wrapper.vm.$nextTick();
-    await new Promise((resolve) => setTimeout(resolve, 50));
 
     expect(wrapper.text()).toContain("Thinking...");
-    resolvePromise!();
-    await submitPromise;
   });
 
   it("submits message and updates store", async () => {
     const wrapper = await mountSuspended(ChatInterface);
-    const input = wrapper.find('input[type="text"]') as any;
+    const input = wrapper.find('input[type="text"]');
     const form = wrapper.find("form");
 
     await input.setValue("Test message");
     await form.trigger("submit");
     await wrapper.vm.$nextTick();
-    await new Promise((resolve) => setTimeout(resolve, 200));
 
     const userMessages = chatStore.messages.filter((m) => m.role === "user");
     expect(userMessages.length).toBeGreaterThan(0);
@@ -128,14 +83,14 @@ describe("ChatInterface", () => {
 
   it("clears input after submission", async () => {
     const wrapper = await mountSuspended(ChatInterface);
-    const input = wrapper.find('input[type="text"]') as any;
+    const input = wrapper.find('input[type="text"]');
     const form = wrapper.find("form");
 
     await input.setValue("Test message");
     await form.trigger("submit");
     await wrapper.vm.$nextTick();
 
-    expect(input.element.value).toBe("");
+    expect((input.element as HTMLInputElement).value).toBe("");
   });
 
   it("does not submit empty message", async () => {
@@ -151,13 +106,12 @@ describe("ChatInterface", () => {
 
   it("submits on Enter key press", async () => {
     const wrapper = await mountSuspended(ChatInterface);
-    const input = wrapper.find('input[type="text"]') as any;
+    const input = wrapper.find('input[type="text"]');
     const initialCount = chatStore.messages.length;
 
     await input.setValue("Test message");
     await input.trigger("keypress", { key: "Enter" });
     await wrapper.vm.$nextTick();
-    await new Promise((resolve) => setTimeout(resolve, 100));
 
     expect(chatStore.messages.length).toBeGreaterThan(initialCount);
   });

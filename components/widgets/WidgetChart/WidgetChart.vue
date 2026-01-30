@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick } from "vue";
+import { ref, onMounted, nextTick } from "vue";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -78,7 +78,7 @@ onMounted(() => {
   <div class="w-full h-full p-6 bg-white rounded-lg shadow-lg flex flex-col">
     <h2 class="text-2xl font-bold mb-4 text-gray-800">{{ title }}</h2>
     <div class="flex-1">
-      <canvas ref="chartCanvas" class="w-full h-full"></canvas>
+      <canvas ref="chartCanvas" class="w-full h-full" />
     </div>
   </div>
 </template>

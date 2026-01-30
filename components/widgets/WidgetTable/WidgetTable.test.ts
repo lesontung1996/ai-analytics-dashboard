@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect } from "vitest";
 import { mountSuspended } from "@nuxt/test-utils/runtime";
 import WidgetTable from "./WidgetTable.vue";
 
@@ -10,10 +10,6 @@ describe("WidgetTable", () => {
       { metric: "Users", value: 5420, change: "+8%" },
     ],
   };
-
-  beforeEach(() => {
-    // Reset any state if needed
-  });
 
   it("renders with correct props", async () => {
     const wrapper = await mountSuspended(WidgetTable, {

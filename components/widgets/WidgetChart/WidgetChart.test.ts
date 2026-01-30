@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
+import { describe, it, expect } from "vitest";
 import { mountSuspended } from "@nuxt/test-utils/runtime";
 import WidgetChart from "./WidgetChart.vue";
 
@@ -7,14 +7,6 @@ describe("WidgetChart", () => {
     title: "Test Chart",
     data: [10, 20, 30, 40],
   };
-
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
-
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
 
   it("renders with correct props", async () => {
     const wrapper = await mountSuspended(WidgetChart, {
