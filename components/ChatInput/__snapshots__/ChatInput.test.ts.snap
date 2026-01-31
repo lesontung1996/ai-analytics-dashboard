@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ChatInput > matches snapshot 1`] = `
+"<div class="border-t border-gray-200 p-4 bg-white">
+  <form class="flex space-x-2"><input type="text" name="user-input" placeholder="Ask a question..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"><button type="submit" name="send-button" disabled="" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"> Send </button></form>
+</div>"
+`;

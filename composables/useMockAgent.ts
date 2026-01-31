@@ -8,12 +8,7 @@ export const useMockAgent = () => {
 
     const lowerQuery = query.toLowerCase();
 
-    // Pattern matching for different query types
-    if (
-      lowerQuery.includes("sales") ||
-      lowerQuery.includes("revenue") ||
-      lowerQuery.includes("chart")
-    ) {
+    if (lowerQuery.includes("sales")) {
       return {
         message:
           "I've analyzed the sales data. Revenue is up 15% compared to last quarter. Here's a visual breakdown:",
@@ -32,11 +27,7 @@ export const useMockAgent = () => {
       };
     }
 
-    if (
-      lowerQuery.includes("table") ||
-      lowerQuery.includes("list") ||
-      lowerQuery.includes("show as")
-    ) {
+    if (lowerQuery.includes("table")) {
       return {
         message: "Sure, here's the data in a table format:",
         action: {
@@ -55,7 +46,7 @@ export const useMockAgent = () => {
       };
     }
 
-    if (lowerQuery.includes("growth") || lowerQuery.includes("user")) {
+    if (lowerQuery.includes("growth")) {
       return {
         message: "Here's the user growth data for the past quarter:",
         action: {

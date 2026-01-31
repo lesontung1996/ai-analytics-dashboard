@@ -1,11 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ChatBubble > emits click event with message when clicking button 1`] = `
+exports[`ChatBubble > renders agent message correctl and emits click event when clicking on it 1`] = `
 "<div class="flex justify-start">
   <!-- Clickable agent message with widget action --><button type="button" class="max-w-[80%] rounded-lg px-4 py-2 transition-all duration-200 text-left bg-white text-gray-800 shadow-md cursor-pointer hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2">
     <div class="text-sm font-bold mb-1">AI Agent</div>
     <div class="whitespace-pre-wrap">Test message <span class="sr-only">Click to show the widget</span></div>
     <div class="text-xs mt-1 opacity-70">12:00:00 PM</div>
   </button>
+</div>"
+`;
+
+exports[`ChatBubble > renders user message correctly 1`] = `
+"<div class="flex justify-end">
+  <!-- Clickable agent message with widget action -->
+  <!-- Non-clickable messages (user messages or agent messages without widget) -->
+  <div class="max-w-[80%] rounded-lg px-4 py-2 transition-all duration-200 bg-blue-500 text-white shadow-md">
+    <!--v-if-->
+    <div class="whitespace-pre-wrap">Show me the sales chart</div>
+    <div class="text-xs mt-1 opacity-70">12:00:00 PM</div>
+  </div>
 </div>"
 `;
