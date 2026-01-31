@@ -64,12 +64,12 @@ A modern, interactive AI-powered analytics dashboard built with Nuxt 3, Vue 3, a
 
 ## Usage
 
-1. Start the development server
-2. Open the application in your browser
-3. Type a question in the chat interface (e.g., "How are our sales doing?")
-4. Watch the AI agent respond with streaming text
-5. See the corresponding widget appear in the right panel
-6. Try follow-up queries like "Show this as a table" to swap widgets
+1. Go to https://ai-analytics-dashboard-2026.netlify.app/
+2. Type a question in the chat interface (e.g., "How are our sales doing?")
+3. Watch the AI agent respond with streaming text
+4. See the corresponding widget appear in the right panel
+5. Try follow-up queries like "Show this as a table" to swap widgets
+6. Click on on previous agent messages to restore their associated widget
 
 ### Example Queries
 
