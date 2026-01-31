@@ -1,0 +1,36 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WidgetChart > accepts title and data props 1`] = `
+"<div class="w-full h-full p-6 bg-white rounded-lg shadow-lg flex flex-col">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800">Custom Title</h2>
+  <div class="flex-1"><canvas class="w-full h-full"></canvas></div>
+</div>"
+`;
+
+exports[`WidgetChart > displays the title 1`] = `
+"<div class="w-full h-full p-6 bg-white rounded-lg shadow-lg flex flex-col">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800">Test Chart</h2>
+  <div class="flex-1"><canvas class="w-full h-full"></canvas></div>
+</div>"
+`;
+
+exports[`WidgetChart > handles empty data array 1`] = `
+"<div class="w-full h-full p-6 bg-white rounded-lg shadow-lg flex flex-col">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800">Empty Chart</h2>
+  <div class="flex-1"><canvas class="w-full h-full"></canvas></div>
+</div>"
+`;
+
+exports[`WidgetChart > renders with correct props 1`] = `
+"<div class="w-full h-full p-6 bg-white rounded-lg shadow-lg flex flex-col">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800">Test Chart</h2>
+  <div class="flex-1"><canvas class="w-full h-full"></canvas></div>
+</div>"
+`;
+
+exports[`WidgetChart > updates title when prop changes 1`] = `
+"<div class="w-full h-full p-6 bg-white rounded-lg shadow-lg flex flex-col">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800">Updated Title</h2>
+  <div class="flex-1"><canvas class="w-full h-full"></canvas></div>
+</div>"
+`;

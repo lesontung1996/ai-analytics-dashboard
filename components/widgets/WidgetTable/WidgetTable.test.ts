@@ -18,6 +18,7 @@ describe("WidgetTable", () => {
 
     expect(wrapper.exists()).toBe(true);
     expect(wrapper.find("table").exists()).toBe(true);
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("displays the title", async () => {
@@ -27,6 +28,7 @@ describe("WidgetTable", () => {
 
     expect(wrapper.text()).toContain("Test Table");
     expect(wrapper.props("title")).toBe("Test Table");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("renders table headers from data keys", async () => {
@@ -39,6 +41,7 @@ describe("WidgetTable", () => {
     expect(wrapper.text()).toContain("metric");
     expect(wrapper.text()).toContain("value");
     expect(wrapper.text()).toContain("change");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("renders table rows with data", async () => {
@@ -52,6 +55,7 @@ describe("WidgetTable", () => {
     expect(wrapper.text()).toContain("125,000");
     expect(wrapper.text()).toContain("Users");
     expect(wrapper.text()).toContain("5,420");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("formats numbers with locale string", async () => {
@@ -67,6 +71,7 @@ describe("WidgetTable", () => {
 
     expect(wrapper.text()).toContain("125,000");
     expect(wrapper.text()).toContain("5,420");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("handles empty data array", async () => {
@@ -79,6 +84,7 @@ describe("WidgetTable", () => {
 
     expect(wrapper.text()).toContain("No data available");
     expect(wrapper.find("table").exists()).toBe(true);
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("updates table when data prop changes", async () => {
@@ -96,5 +102,6 @@ describe("WidgetTable", () => {
 
     expect(wrapper.text()).toContain("Sales");
     expect(wrapper.text()).not.toContain("Revenue");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });

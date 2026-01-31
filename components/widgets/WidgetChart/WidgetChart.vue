@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from "vue";
+import { ref, useTemplateRef, onMounted, nextTick } from "vue";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,7 +22,7 @@ ChartJS.register(
   Legend,
 );
 
-const chartCanvas = ref<HTMLCanvasElement | null>(null);
+const chartCanvas = useTemplateRef("chartCanvas");
 const chartInstance = ref<ChartJS | null>(null);
 
 const createChart = async () => {

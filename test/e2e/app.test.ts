@@ -5,7 +5,7 @@ import type { Page } from "playwright-core";
 const sendMessage = async (page: Page, message: string) => {
   const input = page.locator('input[name="user-input"]');
   await input.fill(message);
-  await page.click('button[type="submit"]');
+  await page.click('button[name="send-button"]');
 
   // Wait for thinking indicator to appear and disappear
   await page.waitForSelector("text=Thinking...", { timeout: 3000 });
@@ -14,6 +14,18 @@ const sendMessage = async (page: Page, message: string) => {
     timeout: 5000,
   });
 };
+
+test("should render the app correctly", async ({ page, goto }) => {
+  await goto("/", { waitUntil: "hydration" });
+  const instructionText = page.locator(
+    "p:has-text('Ask a question to see analytics widgets')",
+  );
+  const userInput = page.locator('input[name="user-input"]');
+  await expect(page).toHaveTitle("AI Analytics Dashboard");
+  await expect(userInput).toBeVisible();
+  await expect(userInput).toHaveAttribute("placeholder", "Ask a question...");
+  await expect(instructionText).toBeVisible();
+});
 
 test("should display SalesChart widget when asking about sales", async ({
   page,
@@ -130,8 +142,6 @@ test("should switch widgets when clicking different agent messages", async ({
   await sendMessage(page, "Show me sales");
   const salesMessage = page.locator("text=I've analyzed the sales data");
   const salesButton = page.getByRole("button").filter({ has: salesMessage });
-
-  // await salesButton.click();
 
   // Verify Q3 Revenue widget
   let widgetTitle = page.locator("h2:has-text('Q3 Revenue')");

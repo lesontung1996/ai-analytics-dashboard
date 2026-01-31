@@ -1,0 +1,194 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ChatInterface > clears input after submission 1`] = `
+"<div data-v-6ce5e70c="" class="flex flex-col h-full bg-gray-50">
+  <!-- Messages Container -->
+  <div data-v-6ce5e70c="" class="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
+    <div data-v-6ce5e70c="" class="flex justify-end">
+      <!-- Clickable agent message with widget action -->
+      <!-- Non-clickable messages (user messages or agent messages without widget) -->
+      <div class="max-w-[80%] rounded-lg px-4 py-2 transition-all duration-200 bg-blue-500 text-white shadow-md">
+        <!--v-if-->
+        <div class="whitespace-pre-wrap">Test message</div>
+        <div class="text-xs mt-1 opacity-70">12:00:00 PM</div>
+      </div>
+    </div><!-- Thinking Indicator -->
+    <div data-v-6ce5e70c="" class="flex justify-start">
+      <div class="bg-white rounded-lg px-4 py-2 shadow-md" data-v-6ce5e70c="">
+        <div class="flex items-center space-x-2" data-v-6ce5e70c="">
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" data-v-6ce5e70c=""></div>
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay:0.1s;" data-v-6ce5e70c=""></div>
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay:0.2s;" data-v-6ce5e70c=""></div><span class="text-sm text-gray-600 ml-2" data-v-6ce5e70c="">Thinking...</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- Input Area -->
+  <div data-v-6ce5e70c="" class="border-t border-gray-200 p-4 bg-white">
+    <form data-v-6ce5e70c="" class="flex space-x-2"><input data-v-6ce5e70c="" type="text" name="user-input" placeholder="Ask a question..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" disabled=""><button data-v-6ce5e70c="" type="submit" name="send-button" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors" disabled=""> Send </button></form>
+  </div>
+</div>"
+`;
+
+exports[`ChatInterface > displays messages from chatStore 1`] = `
+"<div data-v-6ce5e70c="" class="flex flex-col h-full bg-gray-50">
+  <!-- Messages Container -->
+  <div data-v-6ce5e70c="" class="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
+    <div data-v-6ce5e70c="" class="flex justify-end">
+      <!-- Clickable agent message with widget action -->
+      <!-- Non-clickable messages (user messages or agent messages without widget) -->
+      <div class="max-w-[80%] rounded-lg px-4 py-2 transition-all duration-200 bg-blue-500 text-white shadow-md">
+        <!--v-if-->
+        <div class="whitespace-pre-wrap">Hello</div>
+        <div class="text-xs mt-1 opacity-70">12:00:00 PM</div>
+      </div>
+    </div>
+    <div data-v-6ce5e70c="" class="flex justify-start">
+      <!-- Clickable agent message with widget action -->
+      <!-- Non-clickable messages (user messages or agent messages without widget) -->
+      <div class="max-w-[80%] rounded-lg px-4 py-2 transition-all duration-200 bg-white text-gray-800 shadow-md">
+        <div class="text-sm font-bold mb-1"> AI Agent </div>
+        <div class="whitespace-pre-wrap">Hi there!</div>
+        <div class="text-xs mt-1 opacity-70">12:00:00 PM</div>
+      </div>
+    </div><!-- Thinking Indicator -->
+    <!--v-if-->
+  </div><!-- Input Area -->
+  <div data-v-6ce5e70c="" class="border-t border-gray-200 p-4 bg-white">
+    <form data-v-6ce5e70c="" class="flex space-x-2"><input data-v-6ce5e70c="" type="text" name="user-input" placeholder="Ask a question..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"><button data-v-6ce5e70c="" type="submit" name="send-button" disabled="" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"> Send </button></form>
+  </div>
+</div>"
+`;
+
+exports[`ChatInterface > does not submit empty message 1`] = `
+"<div data-v-6ce5e70c="" class="flex flex-col h-full bg-gray-50">
+  <!-- Messages Container -->
+  <div data-v-6ce5e70c="" class="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
+    <!-- Thinking Indicator -->
+    <!--v-if-->
+  </div><!-- Input Area -->
+  <div data-v-6ce5e70c="" class="border-t border-gray-200 p-4 bg-white">
+    <form data-v-6ce5e70c="" class="flex space-x-2"><input data-v-6ce5e70c="" type="text" name="user-input" placeholder="Ask a question..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"><button data-v-6ce5e70c="" type="submit" name="send-button" disabled="" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"> Send </button></form>
+  </div>
+</div>"
+`;
+
+exports[`ChatInterface > renders correctly 1`] = `
+"<div data-v-6ce5e70c="" class="flex flex-col h-full bg-gray-50">
+  <!-- Messages Container -->
+  <div data-v-6ce5e70c="" class="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
+    <!-- Thinking Indicator -->
+    <!--v-if-->
+  </div><!-- Input Area -->
+  <div data-v-6ce5e70c="" class="border-t border-gray-200 p-4 bg-white">
+    <form data-v-6ce5e70c="" class="flex space-x-2"><input data-v-6ce5e70c="" type="text" name="user-input" placeholder="Ask a question..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"><button data-v-6ce5e70c="" type="submit" name="send-button" disabled="" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"> Send </button></form>
+  </div>
+</div>"
+`;
+
+exports[`ChatInterface > shows thinking indicator when isThinking is true 1`] = `
+"<div data-v-6ce5e70c="" class="flex flex-col h-full bg-gray-50">
+  <!-- Messages Container -->
+  <div data-v-6ce5e70c="" class="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
+    <div data-v-6ce5e70c="" class="flex justify-end">
+      <!-- Clickable agent message with widget action -->
+      <!-- Non-clickable messages (user messages or agent messages without widget) -->
+      <div class="max-w-[80%] rounded-lg px-4 py-2 transition-all duration-200 bg-blue-500 text-white shadow-md">
+        <!--v-if-->
+        <div class="whitespace-pre-wrap">Test message</div>
+        <div class="text-xs mt-1 opacity-70">12:00:00 PM</div>
+      </div>
+    </div><!-- Thinking Indicator -->
+    <div data-v-6ce5e70c="" class="flex justify-start">
+      <div class="bg-white rounded-lg px-4 py-2 shadow-md" data-v-6ce5e70c="">
+        <div class="flex items-center space-x-2" data-v-6ce5e70c="">
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" data-v-6ce5e70c=""></div>
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay:0.1s;" data-v-6ce5e70c=""></div>
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay:0.2s;" data-v-6ce5e70c=""></div><span class="text-sm text-gray-600 ml-2" data-v-6ce5e70c="">Thinking...</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- Input Area -->
+  <div data-v-6ce5e70c="" class="border-t border-gray-200 p-4 bg-white">
+    <form data-v-6ce5e70c="" class="flex space-x-2"><input data-v-6ce5e70c="" type="text" name="user-input" placeholder="Ask a question..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" disabled=""><button data-v-6ce5e70c="" type="submit" name="send-button" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors" disabled=""> Send </button></form>
+  </div>
+</div>"
+`;
+
+exports[`ChatInterface > submits message and updates store 1`] = `
+"<div data-v-6ce5e70c="" class="flex flex-col h-full bg-gray-50">
+  <!-- Messages Container -->
+  <div data-v-6ce5e70c="" class="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
+    <div data-v-6ce5e70c="" class="flex justify-end">
+      <!-- Clickable agent message with widget action -->
+      <!-- Non-clickable messages (user messages or agent messages without widget) -->
+      <div class="max-w-[80%] rounded-lg px-4 py-2 transition-all duration-200 bg-blue-500 text-white shadow-md">
+        <!--v-if-->
+        <div class="whitespace-pre-wrap">Test message</div>
+        <div class="text-xs mt-1 opacity-70">12:00:00 PM</div>
+      </div>
+    </div><!-- Thinking Indicator -->
+    <div data-v-6ce5e70c="" class="flex justify-start">
+      <div class="bg-white rounded-lg px-4 py-2 shadow-md" data-v-6ce5e70c="">
+        <div class="flex items-center space-x-2" data-v-6ce5e70c="">
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" data-v-6ce5e70c=""></div>
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay:0.1s;" data-v-6ce5e70c=""></div>
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay:0.2s;" data-v-6ce5e70c=""></div><span class="text-sm text-gray-600 ml-2" data-v-6ce5e70c="">Thinking...</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- Input Area -->
+  <div data-v-6ce5e70c="" class="border-t border-gray-200 p-4 bg-white">
+    <form data-v-6ce5e70c="" class="flex space-x-2"><input data-v-6ce5e70c="" type="text" name="user-input" placeholder="Ask a question..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" disabled=""><button data-v-6ce5e70c="" type="submit" name="send-button" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors" disabled=""> Send </button></form>
+  </div>
+</div>"
+`;
+
+exports[`ChatInterface > submits on Enter key press 1`] = `
+"<div data-v-6ce5e70c="" class="flex flex-col h-full bg-gray-50">
+  <!-- Messages Container -->
+  <div data-v-6ce5e70c="" class="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
+    <div data-v-6ce5e70c="" class="flex justify-end">
+      <!-- Clickable agent message with widget action -->
+      <!-- Non-clickable messages (user messages or agent messages without widget) -->
+      <div class="max-w-[80%] rounded-lg px-4 py-2 transition-all duration-200 bg-blue-500 text-white shadow-md">
+        <!--v-if-->
+        <div class="whitespace-pre-wrap">Test message</div>
+        <div class="text-xs mt-1 opacity-70">12:00:00 PM</div>
+      </div>
+    </div><!-- Thinking Indicator -->
+    <div data-v-6ce5e70c="" class="flex justify-start">
+      <div class="bg-white rounded-lg px-4 py-2 shadow-md" data-v-6ce5e70c="">
+        <div class="flex items-center space-x-2" data-v-6ce5e70c="">
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" data-v-6ce5e70c=""></div>
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay:0.1s;" data-v-6ce5e70c=""></div>
+          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay:0.2s;" data-v-6ce5e70c=""></div><span class="text-sm text-gray-600 ml-2" data-v-6ce5e70c="">Thinking...</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- Input Area -->
+  <div data-v-6ce5e70c="" class="border-t border-gray-200 p-4 bg-white">
+    <form data-v-6ce5e70c="" class="flex space-x-2"><input data-v-6ce5e70c="" type="text" name="user-input" placeholder="Ask a question..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" disabled=""><button data-v-6ce5e70c="" type="submit" name="send-button" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors" disabled=""> Send </button></form>
+  </div>
+</div>"
+`;
+
+exports[`ChatInterface > updates messages when store changes 1`] = `
+"<div data-v-6ce5e70c="" class="flex flex-col h-full bg-gray-50">
+  <!-- Messages Container -->
+  <div data-v-6ce5e70c="" class="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
+    <div data-v-6ce5e70c="" class="flex justify-end">
+      <!-- Clickable agent message with widget action -->
+      <!-- Non-clickable messages (user messages or agent messages without widget) -->
+      <div class="max-w-[80%] rounded-lg px-4 py-2 transition-all duration-200 bg-blue-500 text-white shadow-md">
+        <!--v-if-->
+        <div class="whitespace-pre-wrap">New message</div>
+        <div class="text-xs mt-1 opacity-70">12:00:00 PM</div>
+      </div>
+    </div><!-- Thinking Indicator -->
+    <!--v-if-->
+  </div><!-- Input Area -->
+  <div data-v-6ce5e70c="" class="border-t border-gray-200 p-4 bg-white">
+    <form data-v-6ce5e70c="" class="flex space-x-2"><input data-v-6ce5e70c="" type="text" name="user-input" placeholder="Ask a question..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"><button data-v-6ce5e70c="" type="submit" name="send-button" disabled="" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"> Send </button></form>
+  </div>
+</div>"
+`;

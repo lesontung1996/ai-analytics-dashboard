@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, vi, expect, beforeEach, afterEach } from "vitest";
 import { mountSuspended } from "@nuxt/test-utils/runtime";
 import ChatInterface from "./ChatInterface.vue";
 
@@ -7,6 +7,8 @@ describe("ChatInterface", () => {
   let widgetStore: ReturnType<typeof useWidgetStore>;
 
   beforeEach(async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    vi.setSystemTime(new Date("2026-01-01T12:00:00"));
     chatStore = useChatStore();
     widgetStore = useWidgetStore();
     chatStore.clearMessages();
@@ -14,9 +16,14 @@ describe("ChatInterface", () => {
     widgetStore.setLoading(false);
   });
 
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it("renders correctly", async () => {
     const wrapper = await mountSuspended(ChatInterface);
     expect(wrapper.exists()).toBe(true);
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("displays messages from chatStore", async () => {
@@ -36,6 +43,7 @@ describe("ChatInterface", () => {
     const wrapper = await mountSuspended(ChatInterface);
     expect(wrapper.text()).toContain("Hello");
     expect(wrapper.text()).toContain("Hi there!");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("updates messages when store changes", async () => {
@@ -51,6 +59,7 @@ describe("ChatInterface", () => {
 
     await wrapper.vm.$nextTick();
     expect(wrapper.text()).toContain("New message");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("shows thinking indicator when isThinking is true", async () => {
@@ -63,6 +72,7 @@ describe("ChatInterface", () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.text()).toContain("Thinking...");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("submits message and updates store", async () => {
@@ -79,6 +89,7 @@ describe("ChatInterface", () => {
     expect(userMessages[userMessages.length - 1].content.trim()).toBe(
       "Test message",
     );
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("clears input after submission", async () => {
@@ -91,6 +102,7 @@ describe("ChatInterface", () => {
     await wrapper.vm.$nextTick();
 
     expect((input.element as HTMLInputElement).value).toBe("");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("does not submit empty message", async () => {
@@ -102,6 +114,7 @@ describe("ChatInterface", () => {
     await wrapper.vm.$nextTick();
 
     expect(chatStore.messages.length).toBe(initialCount);
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("submits on Enter key press", async () => {
@@ -114,5 +127,6 @@ describe("ChatInterface", () => {
     await wrapper.vm.$nextTick();
 
     expect(chatStore.messages.length).toBeGreaterThan(initialCount);
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });

@@ -23,11 +23,6 @@ export default defineConfig({
               rootDir: fileURLToPath(new URL(".", import.meta.url)),
             },
           },
-          browser: {
-            enabled: true,
-            provider: playwright(),
-            instances: [{ browser: "chromium" }],
-          },
         },
       }),
     ],

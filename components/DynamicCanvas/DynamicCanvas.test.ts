@@ -20,6 +20,7 @@ describe("DynamicCanvas", () => {
     const wrapper = await mountSuspended(DynamicCanvas);
 
     expect(wrapper.text()).toContain("No widget active");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("displays widget when activeWidget is set", async () => {
@@ -34,6 +35,7 @@ describe("DynamicCanvas", () => {
     const widgetComponent = widgetRegistry.getWidgetComponent("SalesChart");
     expect(widgetComponent).toBeDefined();
     expect(wrapper.text()).not.toContain("No widget active");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("updates widget when store activeWidget changes", async () => {
@@ -52,6 +54,7 @@ describe("DynamicCanvas", () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.text()).not.toContain("No widget active");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("clears widget when clearWidget is called", async () => {
@@ -67,6 +70,7 @@ describe("DynamicCanvas", () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.text()).toContain("No widget active");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("renders SalesChart widget with props", async () => {
@@ -83,6 +87,7 @@ describe("DynamicCanvas", () => {
 
     expect(wrapper.text()).toContain("Revenue Chart");
     expect(wrapper.find("canvas").exists()).toBe(true);
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("renders KPIList widget with props", async () => {
@@ -105,5 +110,6 @@ describe("DynamicCanvas", () => {
     expect(wrapper.text()).toContain("Key Metrics");
     expect(wrapper.find("table").exists()).toBe(true);
     expect(wrapper.text()).toContain("Revenue");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });

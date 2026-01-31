@@ -15,6 +15,7 @@ describe("WidgetChart", () => {
 
     expect(wrapper.exists()).toBe(true);
     expect(wrapper.find("canvas").exists()).toBe(true);
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("displays the title", async () => {
@@ -24,6 +25,7 @@ describe("WidgetChart", () => {
 
     expect(wrapper.text()).toContain("Test Chart");
     expect(wrapper.props("title")).toBe("Test Chart");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("accepts title and data props", async () => {
@@ -37,6 +39,7 @@ describe("WidgetChart", () => {
     expect(wrapper.props("title")).toBe("Custom Title");
     expect(wrapper.props("data")).toEqual([1, 2, 3]);
     expect(wrapper.text()).toContain("Custom Title");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("handles empty data array", async () => {
@@ -49,6 +52,7 @@ describe("WidgetChart", () => {
 
     expect(wrapper.props("data")).toEqual([]);
     expect(wrapper.exists()).toBe(true);
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("updates title when prop changes", async () => {
@@ -69,5 +73,6 @@ describe("WidgetChart", () => {
     await new Promise((resolve) => setTimeout(resolve, 100));
 
     expect(wrapper.text()).toContain("Updated Title");
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });
