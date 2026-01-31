@@ -14,11 +14,13 @@ A modern, interactive AI-powered analytics dashboard built with Nuxt 3, Vue 3, a
 
 📹 **Demo Recording:**
 
-<!-- Paste your demo video link or embed below -->
-<!-- Example: -->
-<!-- [![Demo Video](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID) -->
+[AI analytics dashboard - Video demo](https://youtu.be/IiZ9wNnasBE)
 
-[_Paste your demo video link here_]
+
+[![IMAGE ALT TEXT HERE](https://github.com/user-attachments/assets/04436fcd-574a-4c82-9b10-1b46a1c524a5)](https://www.youtube.com/watch?v=IiZ9wNnasBE)
+
+
+
 
 ---
 
