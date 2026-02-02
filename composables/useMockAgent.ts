@@ -1,6 +1,36 @@
 import type { AgentResponse, ChartProps, TableProps } from "~/types/agent";
 
+/**
+ * Composable providing mock AI agent functionality for development and testing.
+ * Simulates agent responses based on keyword matching in user queries.
+ *
+ * @returns Object containing the sendMessage method
+ * @returns {Function} sendMessage - Processes a query and returns a mock response
+ *
+ * @example
+ * ```ts
+ * const { sendMessage } = useMockAgent();
+ * const response = await sendMessage("Show me sales data");
+ * // Returns sales chart widget
+ * ```
+ */
 export const useMockAgent = () => {
+  /**
+   * Processes a user query and returns a mock agent response.
+   * Matches keywords in the query to determine the appropriate response type.
+   *
+   * @param query - The user's query string
+   * @returns Promise resolving to an AgentResponse with message and widget action
+   *
+   * @remarks
+   * Keyword matching (case-insensitive):
+   * - "sales" - Returns sales chart with revenue data
+   * - "table" - Returns KPI list in table format
+   * - "growth" - Returns user growth chart
+   * - Default - Returns general analytics overview
+   *
+   * Simulates network latency of 1-2 seconds before responding.
+   */
   const sendMessage = async (query: string): Promise<AgentResponse> => {
     // Simulate latency (1-2 seconds)
     const delay = Math.random() * 1000 + 1000; // 1000-2000ms

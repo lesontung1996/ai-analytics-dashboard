@@ -78,4 +78,70 @@ describe("ChatInterface", () => {
     const wrapper = await mountSuspended(ChatInterface);
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  describe("handleMessageClick", () => {
+    it("does nothing when clicking a user message", async () => {
+      chatStore.addMessage({
+        id: "user-msg-1",
+        role: "user",
+        content: "Hello",
+        timestamp: new Date(),
+      });
+
+      const wrapper = await mountSuspended(ChatInterface);
+      const chatBubble = wrapper.findComponent({ name: "ChatBubble" });
+      await chatBubble.vm.$emit("click", chatStore.messages[0]);
+
+      expect(chatStore.activeMessageId).toBeNull();
+      expect(widgetStore.activeWidget).toBeNull();
+    });
+
+    it("does nothing when clicking an agent message without widgetAction", async () => {
+      chatStore.addMessage({
+        id: "agent-msg-1",
+        role: "agent",
+        content: "Hello there!",
+        timestamp: new Date(),
+      });
+
+      const wrapper = await mountSuspended(ChatInterface);
+      const chatBubble = wrapper.findComponent({ name: "ChatBubble" });
+      await chatBubble.vm.$emit("click", chatStore.messages[0]);
+
+      expect(chatStore.activeMessageId).toBeNull();
+      expect(widgetStore.activeWidget).toBeNull();
+    });
+
+    it("sets active message and widget when clicking an agent message with widgetAction", async () => {
+      const widgetAction = {
+        type: "render_widget" as const,
+        component: "SalesChart" as const,
+        props: {
+          title: "Sales Data",
+          data: [100, 200, 300],
+        },
+      };
+
+      chatStore.addMessage({
+        id: "agent-msg-2",
+        role: "agent",
+        content: "Here is your sales chart",
+        timestamp: new Date(),
+        widgetAction,
+      });
+
+      const wrapper = await mountSuspended(ChatInterface);
+      const chatBubble = wrapper.findComponent({ name: "ChatBubble" });
+      await chatBubble.vm.$emit("click", chatStore.messages[0]);
+
+      expect(chatStore.activeMessageId).toBe("agent-msg-2");
+      expect(widgetStore.activeWidget).toEqual({
+        component: "SalesChart",
+        props: {
+          title: "Sales Data",
+          data: [100, 200, 300],
+        },
+      });
+    });
+  });
 });

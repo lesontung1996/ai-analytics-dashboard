@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { ref } from "vue";
 import type {
   WidgetComponentType,
   ChartProps,
@@ -10,6 +11,18 @@ export interface ActiveWidget {
   props: ChartProps | TableProps;
 }
 
+/**
+ * Pinia store for managing the active widget displayed on the dynamic canvas.
+ * Handles widget state and loading indicators.
+ *
+ * @returns Store with widget state and mutation methods
+ *
+ * @example
+ * ```ts
+ * const widgetStore = useWidgetStore();
+ * widgetStore.setActiveWidget({ component: 'SalesChart', props: { title: 'Revenue', data: [1,2,3] } });
+ * ```
+ */
 export const useWidgetStore = defineStore("widget", () => {
   const activeWidget = ref<ActiveWidget | null>(null);
   const isLoading = ref(false);
