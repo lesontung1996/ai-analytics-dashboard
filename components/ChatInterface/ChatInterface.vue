@@ -41,10 +41,8 @@ const handleMessageClick = (message: ChatMessage) => {
   // Only handle clicks on agent messages with widget actions
   if (message.role !== "agent" || !message.widgetAction) return;
 
-  // Set this message as active (highlighted)
   chatStore.setActiveMessageId(message.id);
 
-  // Display the widget associated with this message
   widgetStore.setActiveWidget({
     component: message.widgetAction.component,
     props: message.widgetAction.props,
