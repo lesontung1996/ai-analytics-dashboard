@@ -31,9 +31,10 @@ A modern, interactive AI-powered analytics dashboard built with Nuxt 3, Vue 3, a
 │     ChatInterface           │         DynamicCanvas             │
 │     ┌─────────────────┐     │     ┌─────────────────────────┐   │
 │     │  ChatBubble[]   │     │     │   Widget Registry       │   │
+│     │                 │     │     │(Loads widgets asynchronously)
 │     │  (User/Agent)   │     │     │   ┌─────────────────┐   │   │
 │     ├─────────────────┤     │     │   │  WidgetChart    │   │   │
-│     │ ThinkingIndicator│    │     │   │  (Chart.js)     │   │   │
+│     │ThinkingIndicator│     │     │   │  (Chart.js)     │   │   │
 │     ├─────────────────┤     │     │   ├─────────────────┤   │   │
 │     │   ChatInput     │     │     │   │  WidgetTable    │   │   │
 │     └─────────────────┘     │     │   │  (Data Grid)    │   │   │
@@ -153,72 +154,6 @@ All files                                |   94.84 |    90.27 |   97.67 |   96.5
  ✓ test/e2e/app.test.ts:135:5 › should switch widgets when clicking different agent messages
 
 6 passed
-```
-
----
-
-## Setup & Development
-
-### Prerequisites
-
-- Node.js (check `.nvmrc` for version)
-- pnpm (recommended) or npm/yarn
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/lesontung1996/ai-analytics-dashboard.git
-cd ai-analytics-dashboard
-
-# Install dependencies
-pnpm install
-```
-
-### Development Server
-
-```bash
-# Start dev server on http://localhost:3000
-pnpm dev
-```
-
-### Testing
-
-```bash
-# Run unit tests
-pnpm test
-
-# Run unit tests in watch mode
-pnpm test:watch
-
-# Run unit tests with coverage
-pnpm test:coverage
-
-# Run E2E tests
-pnpm test:e2e
-
-# Run E2E tests with UI
-pnpm test:e2e:ui
-```
-
-### Production Build
-
-```bash
-# Build for production
-pnpm build
-
-# Preview production build
-pnpm preview
-```
-
-### Linting
-
-```bash
-# Run ESLint
-pnpm lint
-
-# Fix linting issues
-pnpm lint:fix
 ```
 
 ---
@@ -381,4 +316,70 @@ it("renders agent message and emits click event", async () => {
   // Snapshot test: verify UI structure
   expect(wrapper.html()).toMatchSnapshot();
 });
+```
+
+---
+
+## Setup & Development
+
+### Prerequisites
+
+- Node.js (check `.nvmrc` for version)
+- pnpm (recommended) or npm/yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/lesontung1996/ai-analytics-dashboard.git
+cd ai-analytics-dashboard
+
+# Install dependencies
+pnpm install
+```
+
+### Development Server
+
+```bash
+# Start dev server on http://localhost:3000
+pnpm dev
+```
+
+### Testing
+
+```bash
+# Run unit tests
+pnpm test
+
+# Run unit tests in watch mode
+pnpm test:watch
+
+# Run unit tests with coverage
+pnpm test:coverage
+
+# Run E2E tests
+pnpm test:e2e
+
+# Run E2E tests with UI
+pnpm test:e2e:ui
+```
+
+### Production Build
+
+```bash
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
+```
+
+### Linting
+
+```bash
+# Run ESLint
+pnpm lint
+
+# Fix linting issues
+pnpm lint:fix
 ```
