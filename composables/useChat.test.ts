@@ -9,7 +9,6 @@ const mockSetActiveMessageId = vi.fn();
 const mockMessages = ref<ChatMessage[]>([]);
 
 const mockSetActiveWidget = vi.fn();
-const mockSetLoading = vi.fn();
 
 const mockSendMessage = vi.fn();
 
@@ -25,7 +24,6 @@ vi.mock("~/stores/chatStore", () => ({
 vi.mock("~/stores/widgetStore", () => ({
   useWidgetStore: vi.fn(() => ({
     setActiveWidget: mockSetActiveWidget,
-    setLoading: mockSetLoading,
   })),
 }));
 
@@ -114,7 +112,7 @@ describe("useChat", () => {
         expect.objectContaining({
           role: "user",
           content: "Hello agent",
-        })
+        }),
       );
     });
 
@@ -130,7 +128,7 @@ describe("useChat", () => {
       expect(mockAddMessage).toHaveBeenCalledWith(
         expect.objectContaining({
           content: "Hello agent",
-        })
+        }),
       );
     });
 
@@ -139,7 +137,7 @@ describe("useChat", () => {
       mockSendMessage.mockReturnValue(
         new Promise((resolve) => {
           resolveAgent = resolve;
-        })
+        }),
       );
 
       const { sendUserMessage, isThinking } = useChat();
@@ -154,22 +152,6 @@ describe("useChat", () => {
       await messagePromise;
 
       expect(isThinking.value).toBe(false);
-    });
-
-    it("sets widget loading state", async () => {
-      mockSendMessage.mockResolvedValue(mockAgentResponse);
-      const { sendUserMessage } = useChat();
-
-      const messagePromise = sendUserMessage("Hello");
-
-      // Loading should be set to true
-      expect(mockSetLoading).toHaveBeenCalledWith(true);
-
-      await vi.runAllTimersAsync();
-      await messagePromise;
-
-      // Loading should be set to false after completion
-      expect(mockSetLoading).toHaveBeenCalledWith(false);
     });
 
     it("adds agent message after receiving response", async () => {
@@ -187,7 +169,7 @@ describe("useChat", () => {
           role: "agent",
           content: "",
           isStreaming: true,
-        })
+        }),
       );
     });
 
@@ -225,12 +207,11 @@ describe("useChat", () => {
       await messagePromise;
 
       expect(isThinking.value).toBe(false);
-      expect(mockSetLoading).toHaveBeenCalledWith(false);
       expect(mockAddMessage).toHaveBeenCalledWith(
         expect.objectContaining({
           role: "agent",
           content: "Sorry, I encountered an error. Please try again.",
-        })
+        }),
       );
     });
   });
@@ -262,7 +243,7 @@ describe("useChat", () => {
       // First character should be updated
       expect(mockUpdateMessage).toHaveBeenCalledWith(
         expect.any(String),
-        expect.objectContaining({ content: "H" })
+        expect.objectContaining({ content: "H" }),
       );
 
       vi.advanceTimersByTime(20);
@@ -271,7 +252,7 @@ describe("useChat", () => {
       // Second character should be updated
       expect(mockUpdateMessage).toHaveBeenCalledWith(
         expect.any(String),
-        expect.objectContaining({ content: "Hi" })
+        expect.objectContaining({ content: "Hi" }),
       );
 
       await vi.runAllTimersAsync();
@@ -289,7 +270,7 @@ describe("useChat", () => {
       expect(isStreaming.value).toBe(false);
       expect(mockUpdateMessage).toHaveBeenCalledWith(
         expect.any(String),
-        expect.objectContaining({ isStreaming: false })
+        expect.objectContaining({ isStreaming: false }),
       );
     });
   });

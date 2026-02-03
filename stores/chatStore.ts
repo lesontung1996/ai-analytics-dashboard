@@ -11,7 +11,6 @@ import type { ChatMessage } from "~/types/agent";
  * ```ts
  * const chatStore = useChatStore();
  * chatStore.addMessage({ id: 'msg-1', role: 'user', content: 'Hello', timestamp: new Date() });
- * console.log(chatStore.messageCount); // 1
  * ```
  */
 export const useChatStore = defineStore("chat", () => {
@@ -24,10 +23,6 @@ export const useChatStore = defineStore("chat", () => {
    */
   const lastMessage = computed(() => {
     return messages.value[messages.value.length - 1];
-  });
-
-  const messageCount = computed(() => {
-    return messages.value.length;
   });
 
   const addMessage = (message: ChatMessage) => {
@@ -67,7 +62,6 @@ export const useChatStore = defineStore("chat", () => {
     messages,
     activeMessageId,
     lastMessage,
-    messageCount,
     addMessage,
     clearMessages,
     updateMessage,

@@ -25,7 +25,6 @@ export interface ActiveWidget {
  */
 export const useWidgetStore = defineStore("widget", () => {
   const activeWidget = ref<ActiveWidget | null>(null);
-  const isLoading = ref(false);
 
   const setActiveWidget = (widget: ActiveWidget) => {
     activeWidget.value = widget;
@@ -35,15 +34,9 @@ export const useWidgetStore = defineStore("widget", () => {
     activeWidget.value = null;
   };
 
-  const setLoading = (loading: boolean) => {
-    isLoading.value = loading;
-  };
-
   return {
     activeWidget,
-    isLoading,
     setActiveWidget,
     clearWidget,
-    setLoading,
   };
 });

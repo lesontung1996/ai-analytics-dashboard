@@ -12,7 +12,6 @@ describe("DynamicCanvas", () => {
     widgetStore = useWidgetStore();
     widgetRegistry = useWidgetRegistry();
     widgetStore.clearWidget();
-    widgetStore.setLoading(false);
   });
 
   it("renders placeholder when no widget is active", async () => {

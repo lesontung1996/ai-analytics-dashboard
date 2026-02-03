@@ -34,14 +34,9 @@ export const useChat = () => {
    *
    * @param messageId - The ID of the message to update
    * @param text - The full text to stream
-   * @param onComplete - Optional callback invoked when streaming completes
    * @returns Promise that resolves when streaming is complete
    */
-  const streamText = async (
-    messageId: string,
-    text: string,
-    onComplete?: () => void,
-  ): Promise<void> => {
+  const streamText = async (messageId: string, text: string): Promise<void> => {
     isStreaming.value = true;
     let displayedText = "";
 
@@ -53,7 +48,6 @@ export const useChat = () => {
 
     isStreaming.value = false;
     chatStore.updateMessage(messageId, { isStreaming: false });
-    onComplete?.();
   };
 
   /**
@@ -83,7 +77,6 @@ export const useChat = () => {
 
     // Show thinking indicator
     isThinking.value = true;
-    widgetStore.setLoading(true);
 
     try {
       // Get agent response
@@ -102,9 +95,7 @@ export const useChat = () => {
 
       isThinking.value = false;
       // Stream the message text
-      await streamText(agentMessage.id, response.message, () => {
-        widgetStore.setLoading(false);
-      });
+      await streamText(agentMessage.id, response.message);
 
       // Set the widget after streaming completes and mark this message as active
       widgetStore.setActiveWidget({
@@ -114,7 +105,6 @@ export const useChat = () => {
       chatStore.setActiveMessageId(agentMessage.id);
     } catch (error) {
       isThinking.value = false;
-      widgetStore.setLoading(false);
 
       const errorMessage: ChatMessage = {
         id: `msg-${Date.now()}-error`,

@@ -3,7 +3,9 @@ import { createPinia, setActivePinia } from "pinia";
 import { useChatStore } from "~/stores/chatStore";
 import type { ChatMessage } from "~/types/agent";
 
-const createMockMessage = (overrides: Partial<ChatMessage> = {}): ChatMessage => ({
+const createMockMessage = (
+  overrides: Partial<ChatMessage> = {},
+): ChatMessage => ({
   id: `msg-${Date.now()}`,
   role: "user",
   content: "Test message",
@@ -154,32 +156,6 @@ describe("chatStore", () => {
       store.addMessage(createMockMessage({ id: "msg-2", content: "New Last" }));
 
       expect(store.lastMessage?.content).toBe("New Last");
-    });
-  });
-
-  describe("messageCount computed", () => {
-    it("returns correct count", () => {
-      const store = useChatStore();
-
-      expect(store.messageCount).toBe(0);
-
-      store.addMessage(createMockMessage({ id: "msg-1" }));
-      expect(store.messageCount).toBe(1);
-
-      store.addMessage(createMockMessage({ id: "msg-2" }));
-      expect(store.messageCount).toBe(2);
-    });
-
-    it("updates when messages are cleared", () => {
-      const store = useChatStore();
-      store.addMessage(createMockMessage({ id: "msg-1" }));
-      store.addMessage(createMockMessage({ id: "msg-2" }));
-
-      expect(store.messageCount).toBe(2);
-
-      store.clearMessages();
-
-      expect(store.messageCount).toBe(0);
     });
   });
 });

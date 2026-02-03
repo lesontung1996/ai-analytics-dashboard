@@ -13,7 +13,6 @@ describe("ChatInterface", () => {
     widgetStore = useWidgetStore();
     chatStore.clearMessages();
     widgetStore.clearWidget();
-    widgetStore.setLoading(false);
   });
 
   afterEach(() => {
